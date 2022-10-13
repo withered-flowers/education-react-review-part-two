@@ -1,12 +1,16 @@
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
+import { registerWithEmailAndPass } from "../authentication/firebase";
 
 const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const formOnSubmitHandler = (evt) => {};
+  const formOnSubmitHandler = (evt) => {
+    evt.preventDefault();
+    registerWithEmailAndPass(email, password);
+  };
 
   const inputEmailOnChangeHandler = (evt) => {
     setEmail(evt.target.value);

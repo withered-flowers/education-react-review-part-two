@@ -4,6 +4,12 @@ import { Icon } from "@iconify/react";
 
 import { Link } from "react-router-dom";
 
+import {
+  signInWithEmailAndPass,
+  signInWithGoogle,
+  signInWithGithub,
+} from "../authentication/firebase";
+
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,11 +22,18 @@ const LoginForm = () => {
     setPassword(evt.target.value);
   };
 
-  const formOnSubmitHandler = (evt) => {};
+  const formOnSubmitHandler = (evt) => {
+    evt.preventDefault();
+    signInWithEmailAndPass(email, password);
+  };
 
-  const githubOnClickHandler = (evt) => {};
+  const githubOnClickHandler = (evt) => {
+    signInWithGithub();
+  };
 
-  const googleOnClickHandler = (evt) => {};
+  const googleOnClickHandler = (evt) => {
+    signInWithGoogle();
+  };
 
   return (
     <form className="flex flex-col gap-2" onSubmit={formOnSubmitHandler}>
